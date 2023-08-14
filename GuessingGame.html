@@ -1,0 +1,26 @@
+<script>
+const hiddenNumber = 45;
+var guess;
+function GetInput(){
+	guess = prompt("Please Guess the number");
+	if (isNaN(guess) == false){
+		CompareToNumber();
+	}else{
+		alert("please enter a number and try again.");
+		GetInput();
+	}
+}
+
+function CompareToNumber(){
+	if (guess != hiddenNumber){
+	alert("please try again");
+	GetInput();
+	}else{
+		alert("Match!");
+	}
+}
+
+GetInput();
+
+
+</script>

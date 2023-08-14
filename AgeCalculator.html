@@ -1,0 +1,22 @@
+<script>
+	
+	
+	function CalcAge(beginning, future, month){
+		const today = new Date();
+		let currentMonth = today.getMonth();
+		let calculateAge =  future - beginning;
+		let message;
+		if (currentMonth >= month){
+			message = "I will be " + calculateAge + " in " + future;
+		}else
+		{
+			message = "I will be " + (calculateAge -1) + " in " + future;
+		}
+		return message;
+	}
+	var inputBirthYear = prompt("Please enter birth year: ");
+	var inputBirthMonth = prompt("Please enter birth month: ");
+	var inputFutureYear = prompt("Please enter future year: ");
+	document.write(CalcAge(inputBirthYear, inputFutureYear, inputBirthMonth));
+
+</script>

@@ -1,0 +1,160 @@
+<head>
+    <style>
+        /* The switch - the box around the slider */
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #2196F3;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
+        }
+
+        .userInput{
+            border-radius: 25px;
+            height: 25px;
+        }
+
+        #rectangle {
+            width: 300px;
+            background-color: #2196F3;
+            border-radius: 50px;
+        }
+
+        #rectangle h2 {
+            text-align: center;
+        }
+        #inputHeader {
+            display: inline-block;
+            padding:10px;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+
+    <script>
+        var toggleValue = 0;
+        var fheit = 32;
+        function tempConverterCelcius(celcius){
+            return ((celcius * 1.8) + fheit);
+        }
+        
+        function tempConvertFheit(Fheit){
+            return ((5/9) * (Fheit - 32));
+        }
+        function changeToggleValue(){
+            let header = document.getElementById("inputHeader");
+            let output = document.getElementById("calcOutput");
+            let userInput = document.getElementById("userInput").value;
+            if (toggleValue == 0){
+                header.innerHTML = "Celcius";
+                output.innerHTML = "To Fheit = ";
+                toggleValue = 1;
+            }else{
+                header.innerHTML = "Fheit";
+                output.innerHTML = "To Celcius = ";
+                toggleValue = 0;
+            }
+            if (userInput > 0){
+                checkToggle();
+            }
+            
+            
+        }
+        function checkToggle(){
+            let userInput = document.getElementById("userInput").value;
+            let calcOutput = document.getElementById("calcOutput");
+            if (isNaN(userInput) == false){
+                if (toggleValue == 1){
+                    let headerCelc = tempConverterCelcius(userInput);
+                    calcOutput.innerHTML = ("To Fheit = " + headerCelc);
+                    //alert(headerCelc);
+                }else{
+                    let headerFheit = tempConvertFheit(userInput);
+                    calcOutput.innerHTML = ("To Celcius = " + headerFheit);
+                    //alert(headerFheit);
+                }
+            }else{
+                alert("Please enter only numbers");
+            }
+
+            
+        }
+        
+        
+        </script>
+</head>
+<body>
+    <div id="rectangle">
+        <h2>Celcius / Fheit Converter</h2>
+    </div>
+    
+    <label class="switch">
+        <input type="checkbox" id= "fCSwitch" onClick="changeToggleValue()"></input>
+        <span class="slider round"></span>
+        <h2 id="inputHeader">Fheit</h2>
+    </label>
+    <br>
+    <br>
+    <br>
+    <br>
+    <input type="text" id="userInput" width="100"></input>
+    <br>
+    <h2 id="calcOutput">To Celcius = </h2>
+    <button id="convert" onclick="checkToggle()">Convert</button>
+</body>

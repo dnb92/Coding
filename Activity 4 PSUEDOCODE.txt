@@ -1,0 +1,15 @@
+PSEUDOCODE:
+
+SET number = 30
+BOOL matched = false
+
+WHILE matched == false DO
+	PRINT "Please guess the number"
+	INPUT userInput
+	IF userInput matches number
+		PRINT "You Guessed the number!"
+		BOOL matched = true
+	ELSE
+		"Try again!"
+		
+END WHILE
